@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const app = require("./app");
-const port = 3000;
+const port = 8000;
 
 const dataBaseURI =
   "mongodb+srv://maq:0Jm2YsBBSOGWOhZT@cluster0.gj01oto.mongodb.net/ecommerce?retryWrites=true";
