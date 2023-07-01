@@ -16,6 +16,8 @@ const createTokenAndSend = (user, statusCode, res) => {
     const cookiesOptions = {
       expire: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
       httpOnly: true,
+      secure: true,
+      sameSite: 'none',
     };
 
     res.cookie('jwt', token, cookiesOptions);
@@ -66,6 +68,7 @@ exports.handleSignOut = catchAsync(async (req, res, next) => {
 });
 
 exports.tokenChecker = catchAsync(async (req, res, next) => {
+  console.log('tokenChecker');
   console.log(req.cookies);
   let token;
   if (

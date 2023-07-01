@@ -1,6 +1,7 @@
 const express = require('express');
 
 const authController = require('../controllers/authController');
+const userController = require('../controllers/userController');
 
 const router = express.Router();
 
@@ -19,5 +20,16 @@ router.get(
   (req, res, next) => {
     res.send(`Secret route`);
   }
+);
+router.get(
+  '/api/v1/users/me',
+  authController.tokenChecker,
+  userController.getMe
+);
+
+router.patch(
+  '/api/v1/users/addToMyCart',
+  authController.tokenChecker,
+  userController.addToMyCart
 );
 module.exports = router;
